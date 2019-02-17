@@ -135,3 +135,29 @@ code {
   background-color: #fff;
   color: #0b0e21;
 }
+
+.score-card {
+  background-color: #FFC9AC;
+}
+
+.score {
+  color: #6E5A77;
+  font-size: 26px;
+}
+
+.summary {
+  color: #6E5A77;
+  font-size: 26px;
+}
+
+.report-section {
+  border-bottom: 2px solid #F57382;
+  font-size: 12px;
+  text-align: left;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+
+.restart {
+  margin-top: 10px;
+}
