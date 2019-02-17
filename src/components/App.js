@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import questionData from './../questions.json';
 import Question from './Question';
 import Answer from './Answer';
+import Popup from './Popup';
 
 class App extends Component {
 
@@ -18,7 +19,7 @@ class App extends Component {
       correct: questionData[0].correct,
       answerClassNames: ['', '', '', ''],
       storedResponses: [],
-      displayPopup: 'none'
+      displayPopup: false
     };
   }
 
@@ -40,11 +41,20 @@ class App extends Component {
     });
     if (currentQuestion === total - 1) {
         this.setState({
-            displayPopup: 'flex'
+            displayPopup: true
         });
     } else {
         this.pushData(currentQuestion + 1);
     }
+  }
+
+  restartQuiz = () => {
+    this.setState({
+      displayPopup: false,
+      storedResponses: [],
+      score: 0
+    });
+    this.pushData(0);
   }
 
   setAnswerClassNames = answerClassNames => {
@@ -76,14 +86,35 @@ class App extends Component {
   
 
   render() {
-    let {answers, correct, questionAnswered, currentQuestion, total, showButton, answerClassNames, question} = this.state;
+    let {
+      answers,
+      correct,
+      questionAnswered,
+      currentQuestion,
+      total,
+      showButton,
+      answerClassNames,
+      question,
+      displayPopup,
+      score,
+      storedResponses
+    } = this.state;
     return (
       <div className="container-fluid">
+        <Popup 
+          displayPopup={displayPopup}
+          score={score}
+          total={total}
+          storedResponses={storedResponses}
+          questionData={questionData}
+          restartQuiz={this.restartQuiz}
+        />
         <div className="row">
           <Question 
             currentQuestion={currentQuestion}
             total={total}
             question={question}
+            displayPopup={displayPopup}
           />
         </div>
 
@@ -97,6 +128,7 @@ class App extends Component {
             classNames={answerClassNames}
             setClassName={this.setAnswerClassNames}
             addResponse={this.addResponse}
+            displayPopup={displayPopup}
           />
         </div>
         <div id="submit">

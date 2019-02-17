@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function Question(props) {
-  return (
+  return !props.displayPopup ? (
     <div className="col-12">
       <div className="question-container">
         <div className="question-number">
@@ -12,5 +12,5 @@ export default function Question(props) {
         </div>
       </div>
     </div>    
-  )
+  ) : null;
 }

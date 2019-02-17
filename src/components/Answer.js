@@ -28,8 +28,8 @@ export default class Answer extends Component {
   }
 
   render() {
-    let { answers, classNames } = this.props;
-    return (
+    let { answers, classNames, displayPopup } = this.props;
+    return !displayPopup ? (
       <div className="col-12">
         <div id="answers">
           <ul>
@@ -40,6 +40,6 @@ export default class Answer extends Component {
           </ul>
         </div>
       </div>
-    )
+    ) : null;
   }
 }
