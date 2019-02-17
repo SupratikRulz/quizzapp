@@ -14,8 +14,8 @@ code {
     monospace;
 }
 
-#question {
-  background-color: #0094da;
+.question {
+  background-color: #46518C;
   color: white;
   padding: 10px;
   text-align: center;
@@ -49,7 +49,7 @@ code {
 
 #answers li {
   background-color: #fff;
-  border: 2px solid #0094da;
+  border: 2px solid #46518C;
   min-height: 70px;
   width: 48%;
   display: flex;
@@ -59,7 +59,7 @@ code {
 }
 
 #answers li span {
-  background-color: #0084da;
+  background-color: #46518C;
   color: #fff;
   font-size: 30px;
   flex: 75px;
@@ -87,29 +87,29 @@ code {
 }
 
 #answers li.right {
-  border-color: #1ea55b;
-  color: #1ea55b;
+  border-color: #47AB6C;
+  color: #47AB6C;
 }
 
 #answers li.right span {
-  background-color: #1ea55b;
+  background-color: #47AB6C;
 }
 
 #answers li.right p {
-  color: #1ea55b;
+  color: #47AB6C;
 }
 
 #answers li.wrong {
-  border-color: #dc0a0a;
-  color: #dc0a0a;
+  border-color: #ED553B;
+  color: #ED553B;
 }
 
 #answers li.wrong span {
-  background-color: #dc0a0a;
+  background-color: #ED553B;
 }
 
 #answers li.wrong p {
-  color: #dc0a0a;
+  color: #ED553B;
 }
 
 #submit {
