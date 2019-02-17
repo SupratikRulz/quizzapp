@@ -16,7 +16,9 @@ class App extends Component {
       question: questionData[0].question,
       answers: questionData[0].answers,
       correct: questionData[0].correct,
-      answerClassNames: ['', '', '', '']
+      answerClassNames: ['', '', '', ''],
+      storedResponses: [],
+      displayPopup: 'none'
     };
   }
 
@@ -31,17 +33,17 @@ class App extends Component {
 
   nextQuestion = () => {
     let {currentQuestion, total} = this.state;
-    if(currentQuestion === total - 1){
+    this.setState({
+      showButton: false,
+      questionAnswered: false,
+      answerClassNames: ['', '', '', '']
+    });
+    if (currentQuestion === total - 1) {
         this.setState({
             displayPopup: 'flex'
         });
     } else {
         this.pushData(currentQuestion + 1);
-        this.setState({
-            showButton: false,
-            questionAnswered: false,
-            answerClassNames: ['', '', '', '']
-        });
     }
   }
 
@@ -59,6 +61,12 @@ class App extends Component {
     this.setState({
         showButton: true,
         questionAnswered: true
+    })
+  }
+
+  addResponse = response => {
+    this.setState({
+      storedResponses: [...this.state.storedResponses, response]
     })
   }
 
@@ -88,6 +96,7 @@ class App extends Component {
             increaseScore={this.handleIncreaseScore}
             classNames={answerClassNames}
             setClassName={this.setAnswerClassNames}
+            addResponse={this.addResponse}
           />
         </div>
         <div id="submit">

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 export default class Answer extends Component {
 
   checkAnswer = (e) => {
-    let { isAnswered, setClassName, correct, increaseScore, classNames, showButton } = this.props;
+    let { isAnswered, setClassName, correct, increaseScore, classNames, showButton, addResponse } = this.props;
     
     if(!isAnswered) {
         let elem = e.currentTarget,
@@ -23,6 +23,7 @@ export default class Answer extends Component {
         
         setClassName(updatedClassNames);
         showButton();
+        addResponse(answer);
     }
   }
 
