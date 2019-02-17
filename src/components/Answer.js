@@ -7,17 +7,20 @@ export default class Answer extends Component {
     
     if(!isAnswered) {
         let elem = e.currentTarget,
-          answer = Number(elem.dataset.id),
+          answer = Number(elem.getAttribute('data-id')),
           updatedClassNames = [...classNames];
-
+        
+        console.log('The chosen Answer is: Option ' + elem.getAttribute('data-option'));
+        
         if (answer === correct) {
-            updatedClassNames[answer-1] = 'right';
-            increaseScore();
+          console.log('Chosen Option is correct');
+          updatedClassNames[answer - 1] = 'right';
+          increaseScore();
+        } else {
+            updatedClassNames[answer - 1] = 'wrong';
+            console.log('Chosen Option is wrong! The correct option is ' + String.fromCharCode(64 + correct));
         }
-        else {
-            updatedClassNames[answer-1] = 'wrong';
-        }
-
+        
         setClassName(updatedClassNames);
         showButton();
     }
@@ -29,10 +32,10 @@ export default class Answer extends Component {
       <div className="col-12">
         <div id="answers">
           <ul>
-              <li onClick={this.checkAnswer} className={classNames[0]} data-id="1"><span>A</span> <p>{answers[0]}</p></li>
-              <li onClick={this.checkAnswer} className={classNames[1]} data-id="2"><span>B</span> <p>{answers[1]}</p></li>
-              <li onClick={this.checkAnswer} className={classNames[2]} data-id="3"><span>C</span> <p>{answers[2]}</p></li>
-              <li onClick={this.checkAnswer} className={classNames[3]} data-id="4"><span>D</span> <p>{answers[3]}</p></li>
+              <li onClick={this.checkAnswer} className={classNames[0]} data-id="1" data-option="A"><span>A</span> <p>{answers[0]}</p></li>
+              <li onClick={this.checkAnswer} className={classNames[1]} data-id="2" data-option="B"><span>B</span> <p>{answers[1]}</p></li>
+              <li onClick={this.checkAnswer} className={classNames[2]} data-id="3" data-option="C"><span>C</span> <p>{answers[2]}</p></li>
+              <li onClick={this.checkAnswer} className={classNames[3]} data-id="4" data-option="D"><span>D</span> <p>{answers[3]}</p></li>
           </ul>
         </div>
       </div>

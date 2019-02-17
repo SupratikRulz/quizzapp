@@ -81,7 +81,6 @@ class App extends Component {
 
         <div className="row">
           <Answer 
-            currentQuestion={currentQuestion}
             answers={answers}
             correct={correct}
             isAnswered={questionAnswered}
